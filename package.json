@@ -1,0 +1,115 @@
+{
+  "name": "sms-panel-manager",
+  "version": "0.1.0",
+  "description": "Typed, provider-neutral transactional SMS orchestration for Node.js backends",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CHANGELOG.md"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./mongoose": {
+      "import": {
+        "types": "./dist/mongoose.d.ts",
+        "default": "./dist/mongoose.js"
+      },
+      "require": {
+        "types": "./dist/mongoose.d.cts",
+        "default": "./dist/mongoose.cjs"
+      }
+    },
+    "./providers": {
+      "import": {
+        "types": "./dist/providers.d.ts",
+        "default": "./dist/providers.js"
+      },
+      "require": {
+        "types": "./dist/providers.d.cts",
+        "default": "./dist/providers.cjs"
+      }
+    },
+    "./nestjs": {
+      "import": {
+        "types": "./dist/nestjs.d.ts",
+        "default": "./dist/nestjs.js"
+      },
+      "require": {
+        "types": "./dist/nestjs.d.cts",
+        "default": "./dist/nestjs.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run test:package",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:package": "node scripts/verify-package.mjs",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "mongoose": "^9.12.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/common": "^12.3.3",
+    "@nestjs/core": "^12.3.3",
+    "@nestjs/testing": "^12.3.3",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=10 <13",
+    "@nestjs/core": ">=10 <13",
+    "reflect-metadata": ">=0.1.13",
+    "rxjs": ">=7"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    },
+    "@nestjs/core": {
+      "optional": true
+    },
+    "reflect-metadata": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
+  },
+  "packageManager": "npm@11.6.4"
+}
